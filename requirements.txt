@@ -1,0 +1,7 @@
+# ==========================================
+# Nama File: requirements.txt
+# Deskripsi: Daftar library yang digunakan aplikasi
+# Penulis:   Fawwaz Yaqzhan
+# Tanggal:   25-04-2026
+# ==========================================
+

@@ -1,0 +1,33 @@
+# ==========================================
+# Nama File: ci.yml
+# Deskripsi: Continous Integration
+# Penulis:   Fawwaz Yaqzhan
+# Tanggal:   25-04-2026
+# ==========================================
+
+name: CI
+
+# Menentukan kapan workflow ini berjalan
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Mengambil kode dari repositori
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Contoh perintah sederhana agar file tidak kosong
+      - name: Run a one-line script
+        run: echo "Halo! GitHub Actions berhasil berjalan."
+
+      - name: Run a multi-line script
+        run: |
+          echo "Sedang mengecek repositori..."
+          ls -R

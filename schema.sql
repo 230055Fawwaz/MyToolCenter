@@ -9,6 +9,7 @@
 CREATE TABLE scripts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
+    category TEXT NOT NULL,
     path TEXT NOT NULL,
     description TEXT,
     status TEXT DEFAULT 'ready' -- 'ready', 'running', 'error'

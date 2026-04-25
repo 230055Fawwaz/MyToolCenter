@@ -14,6 +14,7 @@ class Script(db.Model):
     __tablename__ = 'scripts'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(50)) # Contoh: 'Data Handling', 'Maintenance'
     path = db.Column(db.String(255), nullable=False) # Lokasi file .bat/.ps1
     description = db.Column(db.String(255))
     status = db.Column(db.String(20), default='ready')

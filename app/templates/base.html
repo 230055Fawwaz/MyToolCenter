@@ -5,3 +5,39 @@
   Tanggal:   25-04-2026
 -->
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Web App{% endblock %}</title>
+    <!-- Memanggil CSS dari folder static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav id="sidebar">
+        <div class="sidebar-header">My App</div>
+        <ul class="sidebar-menu">
+            <li><a href="{{ url_for('dashboard') }}">📊 Dashboard</a></li>
+            <li><a href="{{ url_for('scripts') }}">📜 Scripts</a></li>
+        </ul>
+    </nav>
+
+    <div id="main-content">
+        <header>
+            <button class="toggle-btn" id="menu-toggle">☰ Menu</button>
+            <h2 style="margin: 0;">{% block header_title %}Selamat Datang{% endblock %}</h2>
+        </header>
+
+        <main class="container">
+            {% block content %}
+            <p>Silakan pilih menu di samping untuk melihat konten.</p>
+            {% endblock %}
+        </main>
+    </div>
+
+    <!-- Memanggil JS dari folder static -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

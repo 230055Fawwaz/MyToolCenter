@@ -11,12 +11,26 @@
 {% block header_title %}Daftar Scripts{% endblock %}
 
 {% block content %}
-    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <h3>Script Tersedia</h3>
-        <ul>
-            <li>Script Optimasi Database</li>
-            <li>Script Pembersihan Cache</li>
-            <li>Script Backup Mingguan</li>
-        </ul>
+    <div class="main-container">
+        <div class="header-section">
+            <h3>Script Tersedia</h3>
+            <button id="addCardBtn" class="btn-add">Tambah +</button>
+        </div>
+
+        <div id="cardGrid" class="card-grid">
+            <!-- Kartu default -->
+            <div class="script-card">
+                <h4>Script Optimasi Database</h4>
+                <p>Menjalankan pembersihan tabel dan optimasi indeks.</p>
+            </div>
+            <div class="script-card">
+                <h4>Script Pembersihan Cache</h4>
+                <p>Menghapus cache sistem untuk membebaskan ruang.</p>
+            </div>
+            <div class="script-card">
+                <h4>Script Backup Mingguan</h4>
+                <p>Melakukan pencadangan data ke server remote.</p>
+            </div>
+        </div>
     </div>
 {% endblock %}

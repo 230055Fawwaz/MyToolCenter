@@ -5,10 +5,11 @@
   Tanggal:   25-04-2026
 -->
 
-{% extends "base.html" %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_card.css') }}">
+{% endblock %}
 
-{% block title %}Scripts{% endblock %}
-{% block header_title %}Daftar Scripts{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
     <div class="main-container">
@@ -18,19 +19,20 @@
         </div>
 
         <div id="cardGrid" class="card-grid">
-            <!-- Kartu default -->
-            <div class="script-card">
-                <h4>Script Optimasi Database</h4>
-                <p>Menjalankan pembersihan tabel dan optimasi indeks.</p>
+            {% for script in scripts %}
+            <div class="script-card" id="card-{{ script.id }}">
+                <h4>{{ script.name }}</h4>
+                <p>{{ script.description }}</p>
+                <div class="card-footer">
+                    <small>Status: <span id="status-{{ script.id }}">{{ script.status }}</span></small>
+                    <button class="btn-run" onclick="runScript({{ script.id }})">Jalankan</button>
+                </div>
             </div>
-            <div class="script-card">
-                <h4>Script Pembersihan Cache</h4>
-                <p>Menghapus cache sistem untuk membebaskan ruang.</p>
-            </div>
-            <div class="script-card">
-                <h4>Script Backup Mingguan</h4>
-                <p>Melakukan pencadangan data ke server remote.</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/script_manager.js') }}"></script>
 {% endblock %}

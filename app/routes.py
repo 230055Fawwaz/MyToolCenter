@@ -5,8 +5,9 @@
 # Tanggal:   25-04-2026
 # ==========================================
 
-from flask import render_template
-from app import app  # Mengimpor instance app dari package 'app'
+from flask import render_template, jsonify
+from app import app
+from app.models import db, Script, Log # Ambil db dari sini
 
 @app.route('/')
 @app.route('/dashboard')
@@ -15,4 +16,6 @@ def dashboard():
 
 @app.route('/scripts')
 def scripts():
-    return render_template('scripts.html')
+    # Sekarang Script sudah punya context app
+    all_scripts = Script.query.all() 
+    return render_template('scripts.html', scripts=all_scripts)

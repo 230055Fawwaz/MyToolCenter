@@ -28,21 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function runScript(scriptId) {
     const statusSpan = document.getElementById(`status-${scriptId}`);
-    
-    // Ubah UI menjadi loading
-    statusSpan.innerText = 'running...';
-    
-    fetch(`/run/${scriptId}`, { method: 'POST' })
+    statusSpan.innerText = "Running...";
+
+    fetch(`/run-script/${scriptId}`, { method: 'POST' })
         .then(response => response.json())
         .then(data => {
-            statusSpan.innerText = data.status;
-            // Opsional: tampilkan alert sederhana jika error
-            if (data.status === 'error') {
-                alert(`Script gagal dijalankan (Exit Code: ${data.exit_code})`);
+            if (data.status === "success") {
+                statusSpan.innerText = "Success";
+                alert("Output: " + data.output);
+            } else {
+                statusSpan.innerText = "Error";
+                alert("Error: " + data.message);
             }
         })
-        .catch(error => {
-            statusSpan.innerText = 'error';
-            console.error('Fetch error:', error);
+        .catch(err => {
+            statusSpan.innerText = "Error";
+            console.error(err);
         });
 }
